@@ -1,3 +1,5 @@
+// To start this server with nodemon please run 'npm run serverDev'
+
 const express = require('express');
 const app = express();
 app.use(express.json());
