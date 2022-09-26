@@ -11,4 +11,4 @@ node_modules
 .env
 
 # Ignore SASS config files
-.sass-caches
+.sass-cachess
