@@ -19,7 +19,7 @@ app.get('/stocklist', (req, res) => {
 app.patch('/toggleAvailability', async (req, res) => {
   const idSelected = req.body.id;
   //   Find the index of the item with the id
-  const indexItem = inventory.findIndex(x => x.id == idSelected);
+  const indexItem = inventory.findIndex(x => x.id === idSelected);
   if (indexItem !== -1) {
     const itemToAdjust = inventory[indexItem];
     itemToAdjust.inStock = !itemToAdjust.inStock;
@@ -33,7 +33,7 @@ app.patch('/toggleAvailability', async (req, res) => {
 app.patch('/addToCart', async (req, res) => {
   const idSelected = req.body.id;
   //   Find the index of the item with the id
-  const indexItem = inventory.findIndex(x => x.id == idSelected);
+  const indexItem = inventory.findIndex(x => x.id === idSelected);
   if (indexItem !== -1) {
     // item is in stock , reduce one from inventory, reply with item added to basket and new inventory
     const stockCount = inventory[indexItem].stock;
@@ -57,7 +57,7 @@ app.patch('/addToCart', async (req, res) => {
 app.patch('/removeFromCart', async (req, res) => {
   const idSelected = req.body.id;
   //   Find the index of the item with the id
-  const indexItem = inventory.findIndex(x => x.id == idSelected);
+  const indexItem = inventory.findIndex(x => x.id === idSelected);
   if (indexItem !== -1) {
     // item is in stock , reduce one from inventory, reply with item added to basket and new inventory
     const stockCount = inventory[indexItem].stock;

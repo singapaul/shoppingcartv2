@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import rootReducer from './Reducers/rootReducer';
-// import productSaga from './productSaga';
+import rootSaga from './Sagas/HelloWorldSaga';
 import createSagaMiddleware from '@redux-saga/core';
 
 // middleware is a callback function with an array as it can take multiple values
@@ -11,5 +11,5 @@ const store = configureStore({
   middleware: () => [sagaMiddleware],
 });
 
-// sagaMiddleware.run(productSaga);
+sagaMiddleware.run(rootSaga);
 export default store;

@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux';
-import {cartData, countingDemo} from './cartReducer';
+import {cartData, countingDemo, productsFetchList} from './cartReducer';
 
 export default combineReducers({
   cartData,
   countingDemo,
+  productsFetchList,
 });
