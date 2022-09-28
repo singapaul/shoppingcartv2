@@ -1,11 +1,6 @@
-import {
-  ADD_TO_CART,
-  DEV_COUNT,
-  DEV_COUNT_ASYNC,
-  SET_PRODUCT_LIST,
-} from '../constants';
+import {ADD_TO_CART, DEV_COUNT, BEERS_LIST} from '../constants';
 
-export const cartData = (data = ['HELLO MOTHER FUCKERS'], action) => {
+export const cartData = (data = ['HELLO JEFF'], action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return [action.data, ...data];
@@ -17,17 +12,16 @@ export const cartData = (data = ['HELLO MOTHER FUCKERS'], action) => {
 export const countingDemo = (data = 69, action) => {
   switch (action.type) {
     case DEV_COUNT:
-      console.warn('The payload is' + action.payload);
       return data + action.payload;
     default:
       return data;
   }
 };
 
-export const productsFetchList = (data = [], action) => {
+export const productsFetchList = (data = ['no beers yet'], action) => {
   switch (action.type) {
-    case SET_PRODUCT_LIST:
-      return [...action.data];
+    case BEERS_LIST:
+      return action.payload;
     default:
       return data;
   }

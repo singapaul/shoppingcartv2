@@ -4,6 +4,7 @@ import {
   PRODUCT_LIST,
   ASYNC_HELLO_WORLD,
   DEV_COUNT_ASYNC,
+  FETCH_DEMO,
 } from '../constants';
 
 export const addToCart = data => {
@@ -17,8 +18,6 @@ export const developmentCounter = data => {
 };
 
 export const developmentCounterAsync = data => {
-  console.warn('action called cev counter async');
-  console.warn('the data passed has value = ' + data);
   return {type: DEV_COUNT_ASYNC, payload: data};
 };
 
@@ -28,4 +27,8 @@ export const productsList = data => {
 
 export const asyncHellowWorld = () => {
   return {type: ASYNC_HELLO_WORLD};
+};
+
+export const demoFetchAction = () => {
+  return {type: FETCH_DEMO};
 };

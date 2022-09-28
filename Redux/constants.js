@@ -7,3 +7,5 @@ export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 export const DEV_COUNT = 'DEV_COUNT';
 export const DEV_COUNT_ASYNC = 'DEV_COUNT_ASYNC';
 export const ASYNC_HELLO_WORLD = 'ASYNC_HELLO_WORLD';
+export const FETCH_DEMO = 'FETCH_DEMO';
+export const BEERS_LIST = 'BEERS_LIST';

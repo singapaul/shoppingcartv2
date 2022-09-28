@@ -1,23 +1,19 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  Button,
-  ScrollView,
-  View,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, Text, Button, ScrollView, View} from 'react-native';
 import {developmentCounter} from './Redux/Actions/action';
 import {developmentCounterAsync} from './Redux/Actions/action';
+import {demoFetchAction} from './Redux/Actions/action';
 import {useSelector, useDispatch} from 'react-redux';
-import {useState} from 'react';
 import ProductList from './Components/ProductList';
 import ShoppingCart from './Components/ShoppingCart';
 import AppHeader from './Components/AppHeader';
+import {fetchData} from './Redux/API/api';
+import axios from 'axios';
+import {useState} from 'react';
 
 const App = () => {
   const dispatch = useDispatch();
-  const dummyData = useSelector(balls => balls.cartData);
+  // How to access data form the store
   const originalCount = useSelector(balls => balls.countingDemo);
 
   const demoPress = () => {
@@ -28,10 +24,31 @@ const App = () => {
     dispatch(developmentCounterAsync(4));
   };
 
+  const demoPressFetchAP = () => {
+    dispatch(demoFetchAction());
+  };
+
+  useEffect(() => {
+    fetchDataV2();
+  }, []);
+
+  const fetchDataV2 = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/stocklist');
+      console.log(response);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log('we hit error');
+      console.log(error);
+    }
+  };
+
+  const [beers, setBeers] = useState([{name: 'beer 1'}, {name: 'beer 2'}]);
+
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text>HELLOsdsdsf</Text>
         <Button
           onPress={demoPress}
           title="dev count"
@@ -49,13 +66,23 @@ const App = () => {
         <Text>This is the value of what I am adding to the count: 1</Text>
         <View>
           <Text>API fetch request</Text>
-          {/* <Button
-            onPress={}
+          {beers.map(item => (
+            <View key={item.id}>
+              <Text>{item.name}</Text>
+              <Text>{item.price}</Text>
+            </View>
+          ))}
+          <Button
+            onPress={fetchDataV2}
             title="FetchAPI"
             color="#841584"
             accessibilityLabel="Learn more about this purple button"
-          /> */}
+          />
         </View>
+        <View>
+          <Text>REACT NATIVE OFFICIAL GUIDE</Text>
+        </View>
+        <View style={{flex: 1, padding: 24}}></View>
 
         <AppHeader />
         <ProductList />
