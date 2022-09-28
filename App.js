@@ -7,14 +7,14 @@ import {useSelector, useDispatch} from 'react-redux';
 import ProductList from './Components/ProductList';
 import ShoppingCart from './Components/ShoppingCart';
 import AppHeader from './Components/AppHeader';
-import {fetchData} from './Redux/API/api';
-import axios from 'axios';
 import {useState} from 'react';
 
 const App = () => {
+  const [beers, setBeers] = useState([{name: 'beer 1'}, {name: 'beer 2'}]);
   const dispatch = useDispatch();
   // How to access data form the store
   const originalCount = useSelector(balls => balls.countingDemo);
+  const beersAPI = useSelector(balls => balls.productsFetchList);
 
   const demoPress = () => {
     dispatch(developmentCounter(1));
@@ -27,24 +27,6 @@ const App = () => {
   const demoPressFetchAP = () => {
     dispatch(demoFetchAction());
   };
-
-  useEffect(() => {
-    fetchDataV2();
-  }, []);
-
-  const fetchDataV2 = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/stocklist');
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log('we hit error');
-      console.log(error);
-    }
-  };
-
-  const [beers, setBeers] = useState([{name: 'beer 1'}, {name: 'beer 2'}]);
 
   return (
     <SafeAreaView>
@@ -66,18 +48,19 @@ const App = () => {
         <Text>This is the value of what I am adding to the count: 1</Text>
         <View>
           <Text>API fetch request</Text>
-          {beers.map(item => (
+          {beersAPI.map(item => (
             <View key={item.id}>
               <Text>{item.name}</Text>
-              <Text>{item.price}</Text>
+              <Text>{item.stock}</Text>
             </View>
           ))}
           <Button
-            onPress={fetchDataV2}
+            onPress={demoPressFetchAP}
             title="FetchAPI"
             color="#841584"
             accessibilityLabel="Learn more about this purple button"
           />
+          <View></View>
         </View>
         <View>
           <Text>REACT NATIVE OFFICIAL GUIDE</Text>
