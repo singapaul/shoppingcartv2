@@ -15,8 +15,11 @@
     "babel-preset-react-app": "^10.0.1",
     "react": "18.1.0",
     "react-native": "0.70.1",
+    "react-native-flipper": "^0.164.0",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-flipper": "^2.0.2",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.2.1"
   },

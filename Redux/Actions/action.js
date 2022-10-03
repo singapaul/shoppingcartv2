@@ -13,7 +13,6 @@ export const addToCart = data => {
 };
 
 export const developmentCounter = data => {
-  console.warn('action called', data);
   return {type: DEV_COUNT, payload: data};
 };
 
